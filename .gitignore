@@ -20,3 +20,7 @@ benchmarks/graphs
 .env.test.local
 .env.production.local
 .env.local
+
+# hidden files
+hidden
+hidden/*
