@@ -1,5 +1,5 @@
 import { Schema, model } from "mongoose"
-import { DISCORD_CDN_URL } from "../../../../core/constants"
+import { DEFAULT_TIMEZONE, DISCORD_CDN_URL } from "../../../../core/constants"
 
 export interface IUser {
     /** Discord Snowflake ID as string: https://discord.com/developers/docs/reference#snowflakes */
@@ -7,15 +7,13 @@ export interface IUser {
     /** the user's username, not unique across the platform */
     discord_username: string,
     /** the user's display name, if it is set. For bots, this is the application name */
-    discord_global_name?: string,
-    avatar?: string,
-    banner?: string,
-    accent_color?: string,
-    locale?: string,
+    discord_global_name: string | undefined,
+    avatar: string | undefined,
+    banner: string | undefined,
+    accent_color: number | undefined,
+    locale: string | undefined,
     /** For showing times in the UI */
     timezone: string
-
-    getAvatarUrl: () => string | undefined
 }
 
 const userSchema = new Schema<IUser>({
@@ -26,7 +24,7 @@ const userSchema = new Schema<IUser>({
     banner: String,
     accent_color: Number,
     locale: String,
-    timezone: { type: String, required: true, default: "Etc/GMT+0" }
+    timezone: { type: String, required: true, default: DEFAULT_TIMEZONE }
 },
     {
         methods: {

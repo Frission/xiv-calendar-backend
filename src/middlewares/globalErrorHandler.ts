@@ -1,14 +1,17 @@
 import { ErrorRequestHandler } from "express";
-import { BaseError } from "./BaseError";
+import { BaseError } from "../errors/BaseError";
 
 export const globalErrorHandler: ErrorRequestHandler = (error: Partial<BaseError>, req, res, next) => {
     console.log("Error reached global error handler.")
     console.log("Path: ", req.path)
-    console.error("Error: ", error)
 
-    if (error?.type == "redirect") {
-        res.redirect("/error")
-    } else if (error.type == "handled") {
+
+    if (error instanceof BaseError) {
+        console.log(error.name + ": " + error.message)
+
+        if (error.originalErr != null)
+            console.error(error.originalErr)
+
         res.status(error.status ?? 500).send(
             {
                 name: error.name ?? "Internal Server Error",
@@ -17,6 +20,8 @@ export const globalErrorHandler: ErrorRequestHandler = (error: Partial<BaseError
             } satisfies BaseError
         )
     } else {
+        console.error("Error: ", error)
+
         res.status(500).send(
             {
                 name: "Internal Server Error",

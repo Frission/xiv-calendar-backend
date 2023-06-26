@@ -1,8 +1,9 @@
 import express from 'express'
+import 'express-async-errors'
 import dotenv from 'dotenv'
 import { initializeDatabase } from './src/configs/database'
 import userRouter from './src/routes/user'
-import { globalErrorHandler } from './src/errors/globalErrorHandler'
+import { globalErrorHandler } from './src/middlewares/globalErrorHandler'
 
 dotenv.config()
 

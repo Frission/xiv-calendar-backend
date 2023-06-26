@@ -1,23 +1,23 @@
 import { BaseError } from "../../errors/BaseError";
 
-export class CreateUserCodeNotFoundError extends BaseError {
-    public constructor() {
+export class CreateUserError extends BaseError {
+    public constructor(message: string = "Failed to create user.", originalErr: unknown) {
         super(
             "Create User Error",
-            "Discord Oauth2 code was not found in request body",
-            400,
-            "handled"
+            message,
+            500,
+            originalErr
         )
     }
 }
 
-export class CreateUserError extends BaseError {
-    public constructor() {
+export class CreateUserBadRequestError extends BaseError {
+    public constructor(message: string = "Failed to create user.", originalErr?: unknown) {
         super(
             "Create User Error",
-            "Failed to create user.",
-            500,
-            "handled"
+            message,
+            400,
+            originalErr
         )
     }
 }
