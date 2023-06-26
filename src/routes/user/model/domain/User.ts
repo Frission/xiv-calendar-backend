@@ -34,7 +34,7 @@ const userSchema = new Schema<IUser>({
                 if (this.avatar == null)
                     return undefined
 
-                return `${DISCORD_CDN_URL}avatars/${this._id}/${this.avatar}`
+                return `${DISCORD_CDN_URL}/avatars/${this._id}/${this.avatar}`
             },
 
             getAccentColor() {

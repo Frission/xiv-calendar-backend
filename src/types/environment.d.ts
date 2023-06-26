@@ -2,7 +2,11 @@
 declare global {
     namespace NodeJS {
         interface ProcessEnv {
-            MONGO_CONNECTION_STRING: string
+            MONGO_CONNECTION_STRING: string,
+            PORT: string,
+            DISCORD_CLIENT_ID: string,
+            DISCORD_CLIENT_SECRET: string,
+            DISCORD_REDIRECT_URI: string
         }
     }
 }
