@@ -1,5 +1,5 @@
 import { Schema, model } from "mongoose"
-import { DISCORD_CDN_URL } from "../../../../core/constants"
+import { DISCORD_CDN_URL } from "../../../core/constants"
 
 export interface IUser {
     /** Discord Snowflake ID as string: https://discord.com/developers/docs/reference#snowflakes */

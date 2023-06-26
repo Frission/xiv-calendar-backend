@@ -1,6 +1,6 @@
 import { Router } from "express";
-import type { GetUserResponse } from "../../data/model/response/user/GetUserResponse";
-import type { CreateUserDto } from "../../data/model/dto/user/CreateUserDto";
+import { CreateUserDto } from "../../model/dto/user/CreateUserDto";
+import { GetUserResponse } from "../../model/response/user/GetUserResponse";
 
 const router = Router()
 
