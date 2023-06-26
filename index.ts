@@ -1,7 +1,7 @@
 import express from 'express'
 import dotenv from 'dotenv'
 import { initializeDatabase } from './src/configs/database'
-import userRouter from './src/routes/user/userRouter'
+import userRouter from './src/routes/user'
 
 dotenv.config()
 
