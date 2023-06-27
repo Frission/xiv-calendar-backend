@@ -14,11 +14,14 @@ export namespace UserRepository {
             accent_color: discordUser.accent_color,
             locale: discordUser.locale,
             timezone: DEFAULT_TIMEZONE
-        } satisfies IUser)
+        } satisfies IUser);
 
-        user.save()
+        await user.save()
 
         return user.toObject()
     }
 
+    export const getUser = async (id: string): Promise<IUser | null> => {
+        return await User.findById(id)
+    }
 }

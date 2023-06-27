@@ -20,8 +20,12 @@
         "no-unused-vars": "error",
         "no-duplicate-imports": "error",
         "no-unreachable": "error",
-        "space-before-function-paren": "warn",
+        "space-before-function-paren": "off",
         "eqeqeq": "off",
-        "indent": ["error", 4]
+        "indent": [
+            "error",
+            4
+        ],
+        "eol-last": "warn"
     }
 }

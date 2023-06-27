@@ -1,4 +1,6 @@
+import { GetAccessTokenDto } from "../../../auth/model/dto/GetAccessTokenDto";
 
-export interface CreateUserDto {
-    code: string
+// eslint-disable-next-line @typescript-eslint/no-empty-interface
+export interface CreateUserDto extends GetAccessTokenDto {
+
 }

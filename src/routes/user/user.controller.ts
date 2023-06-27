@@ -2,7 +2,7 @@ import type { Request, Response } from "express";
 import { GetUserResponse } from "./model/response/GetUserResponse";
 import { CreateUserDto } from "./model/dto/CreateUserDto";
 import { UserService } from "./user.service";
-import { CreateUserBadRequestError } from "./user.error";
+import { CreateUserBadRequestError, GetUserBadRequestError, UserNotFoundError } from "./user.error";
 
 export namespace UserController {
 
@@ -17,12 +17,23 @@ export namespace UserController {
         response.send(createUserResult)
     }
 
-    export const getUser = (request: Request<{ id: string }>, response: Response<GetUserResponse>) => {
+    export const getUser = async (request: Request<{ id: string }>, response: Response<GetUserResponse>) => {
+        const userId = request.params.id
 
+        if (userId == null)
+            throw new GetUserBadRequestError("ID was not found in the query.")
+
+        const user = await UserService.getUser(userId)
+
+        if (user == null)
+            throw new UserNotFoundError()
+
+        response.send(user)
     }
 
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars, no-unused-vars
     export const getAllUsers = (request: Request, response: Response<Array<GetUserResponse>>) => {
-
+        throw new Error("Not Implemented")
     }
 
 }
