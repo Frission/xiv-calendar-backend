@@ -1,16 +1,16 @@
 import { BaseError } from "../../errors/BaseError";
 
 export class AuthError extends BaseError {
-    public constructor(message = "Failed to authenticate.", originalErr: unknown) {
+    public constructor(message = "Failed to authenticate.", status = 500, originalErr?: unknown) {
         super(
             "Auth Error",
             message,
-            500,
+            status,
             originalErr
         )
     }
-
 }
+
 export class AuthBadRequestError extends BaseError {
     public constructor(message = "Failed to authenticate.", originalErr?: unknown) {
         super(

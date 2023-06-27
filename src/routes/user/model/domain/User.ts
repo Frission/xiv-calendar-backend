@@ -25,28 +25,27 @@ const userSchema = new Schema<IUser>({
     accent_color: Number,
     locale: String,
     timezone: { type: String, required: true, default: DEFAULT_TIMEZONE }
-},
-    {
-        methods: {
-            getAvatarUrl() {
-                if (this.avatar == null)
-                    return undefined
+}, {
+    methods: {
+        getAvatarUrl() {
+            if (this.avatar == null)
+                return undefined
 
-                return `${DISCORD_CDN_URL}/avatars/${this._id}/${this.avatar}`
-            },
+            return `${DISCORD_CDN_URL}/avatars/${this._id}/${this.avatar}`
+        },
 
-            getAccentColor() {
-                if (this.accent_color == null)
-                    return undefined
+        getAccentColor() {
+            if (this.accent_color == null)
+                return undefined
 
-                return `#${Number(this.accent_color).toString(16)}`
-            },
+            return `#${Number(this.accent_color).toString(16)}`
+        },
 
-            getName() {
-                return this.discord_global_name ?? this.discord_username
-            }
+        getName() {
+            return this.discord_global_name ?? this.discord_username
         }
-    })
+    }
+})
 
 const User = model<IUser>("User", userSchema)
 
