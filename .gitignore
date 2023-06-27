@@ -4,6 +4,10 @@ package-lock.json
 *.log
 *.gz
 
+# ignore build
+build
+build/*
+
 # Coveralls
 .nyc_output
 coverage
