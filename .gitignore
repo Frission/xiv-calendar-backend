@@ -7,6 +7,7 @@ package-lock.json
 # ignore build
 build
 build/*
+build/index.js
 
 # Coveralls
 .nyc_output
